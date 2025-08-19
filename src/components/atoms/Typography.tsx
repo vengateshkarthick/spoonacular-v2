@@ -1,10 +1,13 @@
 import { HTMLAttributes } from "react";
 import { Poppins } from "next/font/google";
 import { cn } from "@/utils/cn";
+import { cva, type VariantProps } from "class-variance-authority";
 
-export interface TypographyProps extends HTMLAttributes<HTMLHeadingElement> {
-  level: 1 | 2 | 3 | 4 | 5 | 6;
-  variant?: keyof typeof variants;
+type Level = 1 | 2 | 3 | 4 | 5 | 6;
+export interface TypographyProps
+  extends HTMLAttributes<HTMLHeadingElement>,
+    Omit<VariantProps<typeof typographyVariants>, "level"> {
+  level: Level;
 }
 const poppins = Poppins({
   subsets: ["latin"],
@@ -22,11 +25,27 @@ const tags = {
   6: "h6",
 } as const;
 
-const variants = {
-  primary: "text-gray-800 font-semibold tracking-tight",
-  secondary: "text-gray-500 font-normal tracking-tight",
-  tertiary: "text-gray-400 font-normal tracking-tight",
-}
+const typographyVariants = cva("", {
+  variants: {
+    variant: {
+      primary: "text-gray-800 font-semibold tracking-tight",
+      secondary: "text-gray-500 font-normal tracking-tight",
+      tertiary: "text-gray-400 font-normal tracking-tight",
+    },
+    level: {
+      "1": "text-4xl",
+      "2": "text-3xl",
+      "3": "text-2xl font-normal",
+      "4": "text-xl font-normal",
+      "5": "text-lg font-normal",
+      "6": "text-base font-normal",
+    },
+  },
+  defaultVariants: {
+    variant: "primary",
+    level: "3",
+  },
+});
 
 export function Typography({ level, variant = "primary", className, ...props }: TypographyProps) {
   const Tag = tags[level];
@@ -35,15 +54,7 @@ export function Typography({ level, variant = "primary", className, ...props }: 
   return (
     <Tag
       className={cn(
-        variants[variant],
-        {
-          "text-4xl": level === 1,
-          "text-3xl": level === 2,
-          "text-2xl font-normal": level === 3,
-          "text-xl font-normal": level === 4,
-          "text-lg font-normal": level === 5,
-          "text-base font-normal": level === 6,
-        },
+        typographyVariants({ variant, level: String(level) as "1"|"2"|"3"|"4"|"5"|"6" }),
         className,
         poppins.className
       )}

@@ -16,9 +16,9 @@ export function HomePage() {
             Welcome Back to FeedFood
           </Typography>
 
-          <p className="text-xl text-gray-600">
+          <Typography level={6} className="text-gray-500 font-normal">
             Ready to discover new recipes and continue your culinary journey?
-          </p>
+          </Typography>
 
           <div className="flex items-center justify-center gap-4">
             <Button
