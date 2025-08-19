@@ -3,33 +3,39 @@
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { Button } from "@/components/atoms/Button";
 import { Typography } from "@/components/atoms/Typography";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 export function HomePage() {
+  const router = useRouter();
   return (
-    <div className="container mx-auto py-16">
-      <div className="max-w-4xl mx-auto text-center space-y-8">
+    <div className="container m-auto py-16 pt-10 h-screen mt-1">
+      <div className="max-w-4xl mx-auto text-center space-y-8 pt-10">
         <SignedIn>
           <Typography level={1} className="text-5xl">
             Welcome Back to FeedFood
           </Typography>
-          
+
           <p className="text-xl text-gray-600">
             Ready to discover new recipes and continue your culinary journey?
           </p>
 
           <div className="flex items-center justify-center gap-4">
-            <Link href="/recipes">
-              <Button variant="primary" className="px-8 font-medium shadow-lg hover:shadow-xl transition-shadow">
-                Explore Recipes
-              </Button>
-            </Link>
-            <Link href="/account">
-              <Button variant="outline" className="px-8 font-medium hover:bg-gray-50 transition-colors">
-                Manage Account
-              </Button>
-            </Link>
+            <Button
+              variant="primary"
+              className="px-8 font-medium shadow-lg hover:shadow-xl transition-shadow"
+              onClick={() => router.push("/recipes")}
+            >
+              Explore Recipes
+            </Button>
+
+            <Button
+              variant="outline"
+              className="px-8 font-medium hover:bg-gray-50 transition-colors"
+              onClick={() => router.push("/account")}
+            >
+              Manage Account
+            </Button>
           </div>
         </SignedIn>
 
@@ -49,22 +55,28 @@ export function HomePage() {
               <Typography level={1} variant="primary" className="text-5xl">
                 Welcome to FeedFood
               </Typography>
-              
-              <Typography level={3} variant="secondary" className="text-xl">
-                Discover amazing recipes and manage your meal planning with ease.
+
+              <Typography level={3} variant="secondary" className="text-base">
+                Discover amazing recipes and manage your meal planning with
+                ease.
               </Typography>
 
               <div className="flex items-center justify-center gap-4">
-                <Link href="/sign-in">
-                  <Button variant="primary" className="px-8 font-medium shadow-lg hover:shadow-xl transition-shadow">
-                    Sign In
-                  </Button>
-                </Link>
-                <Link href="/sign-up">
-                  <Button variant="outline" className="px-8 font-medium hover:bg-gray-50 transition-colors">
-                    Create Account
-                  </Button>
-                </Link>
+                <Button
+                  variant="primary"
+                  onClick={() => router.push("/sign-in")}
+                  className="px-8 font-medium shadow-lg hover:shadow-xl transition-shadow"
+                >
+                  Sign In
+                </Button>
+
+                <Button
+                  variant="outline"
+                  onClick={() => router.push("/sign-up")}
+                  className="px-8 font-medium hover:bg-gray-50 transition-colors"
+                >
+                  Create Account
+                </Button>
               </div>
             </div>
           </div>
@@ -72,4 +84,4 @@ export function HomePage() {
       </div>
     </div>
   );
-} 
+}

@@ -11,10 +11,8 @@ export default async function AccountPage() {
   }
 
   return (
-    <AccountTemplate title="Account Management">
-      <div className="space-y-8">
-        <UserProfile />
-      </div>
+    <AccountTemplate title="Profile Management Powered by Clerk">
+      <UserProfile />
     </AccountTemplate>
   );
 } 

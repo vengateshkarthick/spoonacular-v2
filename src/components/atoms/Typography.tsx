@@ -1,10 +1,17 @@
 import { HTMLAttributes } from "react";
+import { Poppins } from "next/font/google";
 import { cn } from "@/utils/cn";
 
-interface TypographyProps extends HTMLAttributes<HTMLHeadingElement> {
+export interface TypographyProps extends HTMLAttributes<HTMLHeadingElement> {
   level: 1 | 2 | 3 | 4 | 5 | 6;
   variant?: keyof typeof variants;
 }
+const poppins = Poppins({
+  subsets: ["latin"],
+  variable: "--font-poppins",
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+});
 
 const tags = {
   1: "h1",
@@ -23,6 +30,7 @@ const variants = {
 
 export function Typography({ level, variant = "primary", className, ...props }: TypographyProps) {
   const Tag = tags[level];
+  
 
   return (
     <Tag
@@ -36,7 +44,8 @@ export function Typography({ level, variant = "primary", className, ...props }: 
           "text-lg font-normal": level === 5,
           "text-base font-normal": level === 6,
         },
-        className
+        className,
+        poppins.className
       )}
       {...props}
     />

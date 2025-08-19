@@ -17,28 +17,26 @@ export function NotFound() {
             className="object-contain"
           />
         </div>
-        
-        <Typography level={1} variant="primary" className="text-4xl">
+
+        <Typography level={1} variant="primary" className="text-2xl">
           404
         </Typography>
-        
+
         <Typography level={2} variant="secondary">
           Page Not Found
         </Typography>
-        
-        <p className="text-gray-600">
-          The page you are looking for might have been removed, had its name changed,
-          or is temporarily unavailable.
-        </p>
+
+        <Typography level={6} variant="secondary">
+          The page you are looking for might have been removed, had its name
+          changed, or is temporarily unavailable.
+        </Typography>
 
         <div className="flex justify-center">
           <Link href="/">
-            <Button variant="primary">
-              Return Home
-            </Button>
+            <Button variant="primary">Return Home</Button>
           </Link>
         </div>
       </Card>
     </div>
   );
-} 
+}
