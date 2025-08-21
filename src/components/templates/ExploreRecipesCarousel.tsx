@@ -10,20 +10,18 @@ export function ExploreRecipesCarousel() {
     <Carousel 
       title="Explore some delicious recipe..."
       items={searchRecipesItemList}
+      className='bg-white border rounded-2xl p-4 md:p-8'
       itemWrapperClassName="w-max h-max p-1 flex flex-col gap-y-4"
       render={(item) => {
         return (
             <div className="m-1 p-2">
                <Image 
                  src={item.image}   
-                 width="100"
+                 width="150"
                  height="120"
-                 className='object-cover'
+                 className='object-cover bg-transparent'
                  alt={`delicious recipes  ${item.title}`}
                />
-               <Typography level={7} variant="tertiary" className="capitalize text-center">
-                {item.title}
-               </Typography>
             </div>
         )
       }}
