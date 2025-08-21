@@ -3,7 +3,7 @@ import { Poppins } from "next/font/google";
 import { cn } from "@/utils/cn";
 import { cva, type VariantProps } from "class-variance-authority";
 
-type Level = 1 | 2 | 3 | 4 | 5 | 6;
+type Level = 1 | 2 | 3 | 4 | 5 | 6 | 7;
 export interface TypographyProps
   extends HTMLAttributes<HTMLHeadingElement>,
     Omit<VariantProps<typeof typographyVariants>, "level"> {
@@ -23,6 +23,7 @@ const tags = {
   4: "h4",
   5: "h5",
   6: "h6",
+  7: "p"
 } as const;
 
 const typographyVariants = cva("", {
@@ -39,6 +40,7 @@ const typographyVariants = cva("", {
       "4": "text-xl font-normal",
       "5": "text-lg font-normal",
       "6": "text-base font-normal",
+      "7": "text-sm font-normal"
     },
   },
   defaultVariants: {
@@ -54,7 +56,7 @@ export function Typography({ level, variant = "primary", className, ...props }: 
   return (
     <Tag
       className={cn(
-        typographyVariants({ variant, level: String(level) as "1"|"2"|"3"|"4"|"5"|"6" }),
+        typographyVariants({ variant, level: String(level) as "1"|"2"|"3"|"4"|"5"|"6"|"7" }),
         className,
         poppins.className
       )}

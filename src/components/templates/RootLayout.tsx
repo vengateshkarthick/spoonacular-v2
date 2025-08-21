@@ -1,12 +1,16 @@
 import { ReactNode } from "react";
+import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { Typography } from "../atoms/Typography";
 import { NavMenu } from "../organisms/NavMenu";
+import { SignedoutTemplate } from "./SignedoutTemplate";
+
 
 interface RootLayoutProps {
   children: ReactNode;
 }
 
 export function RootLayout({ children }: RootLayoutProps) {
+  
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
       <header className="bg-white shadow-sm">
@@ -17,7 +21,14 @@ export function RootLayout({ children }: RootLayoutProps) {
           <NavMenu />
         </div>
       </header>
-      <main className="flex-grow">{children}</main>
+      <main className="flex-grow">
+      <SignedOut>
+         <SignedoutTemplate />
+      </SignedOut>
+        <SignedIn>
+          {children}
+        </SignedIn>
+        </main>
       <footer className="bg-white border-t">
         <Typography
           level={6}
