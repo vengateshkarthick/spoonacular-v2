@@ -1,6 +1,6 @@
 import { FallbackProps } from "react-error-boundary";
-import { Button } from "../atoms/Button";
-import { Typography } from "../atoms/Typography";
+import { Button } from "@atoms/Button";
+import { Typography } from "@atoms/Typography";
 import Image from "next/image";
 
 export default function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {

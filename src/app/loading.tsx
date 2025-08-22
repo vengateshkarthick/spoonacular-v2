@@ -1,4 +1,4 @@
-import { ShimmerLoader } from "@/components/atoms/ShimmerLoader";
+import { ShimmerLoader } from "@atoms/ShimmerLoader";
 
 export default function Loading() {
   return (

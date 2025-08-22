@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "@/components/atoms/Button";
-import { Typography } from "@/components/atoms/Typography";
+import { Button } from "@atoms/Button";
+import { Typography } from "@atoms/Typography";
 import { useRouter } from "next/navigation";
 
 

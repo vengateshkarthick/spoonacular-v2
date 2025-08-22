@@ -1,8 +1,8 @@
 "use client";
 
 import { SignInButton as ClreckSignInButton } from "@clerk/nextjs";
-import { Button } from "@/components/atoms/Button";
-import { Typography } from "@/components/atoms/Typography";
+import { Button } from "@atoms/Button";
+import { Typography } from "@atoms/Typography";
 
 export function SignInButton() {
   return (

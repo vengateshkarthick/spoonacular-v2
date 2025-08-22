@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React  from "react";
 import { ArrowLongLeftIcon, ArrowLongRightIcon } from "@heroicons/react/24/outline";
-import { Button } from "@/components/atoms/Button";
-import { Typography } from "@/components/atoms/Typography";
-import { cn } from "@/utils/cn";
-import { useCarouselScroll } from "@/hooks/useCarouselScroll";
+import { Button } from "@atoms/Button";
+import { Typography } from "@atoms/Typography";
+import { cn } from "@utils/cn";
+import { useCarouselScroll } from "@hooks/useCarouselScroll";
 
 interface CarouselProps<T = unknown> {
   title: string;

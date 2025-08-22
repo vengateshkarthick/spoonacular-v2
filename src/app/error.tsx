@@ -1,6 +1,6 @@
 "use client";
 
-import ErrorFallback from "@/components/templates/ErrorFallback";
+import ErrorFallback from "@templates/ErrorFallback";
 
 interface ErrorPageProps {
   error: Error;

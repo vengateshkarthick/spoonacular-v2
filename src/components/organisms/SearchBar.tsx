@@ -1,7 +1,7 @@
 import { ChangeEvent, useCallback, useState } from "react";
-import { useDebounce } from "@/hooks/useDebounce";
+import { useDebounce } from "@hooks/useDebounce";
 import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { cn } from "@/utils/cn";
+import { cn } from "@utils/cn";
 
 interface SearchBarProps {
   onSearch: (value: string) => void;

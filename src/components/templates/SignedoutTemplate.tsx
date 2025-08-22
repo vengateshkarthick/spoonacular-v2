@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import { Typography } from "@/components/atoms/Typography";
-import { SignInButton } from "@/components/organisms/SignInButton";
-import { SignUpButton } from "@/components/organisms/SingUpButton";
+import { Typography } from "@atoms/Typography";
+import { SignInButton } from "@organisms/SignInButton";
+import { SignUpButton } from "@organisms/SingUpButton";
 
 export function SignedoutTemplate() {
   return (

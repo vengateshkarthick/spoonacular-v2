@@ -1,8 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
-import { searchRecipesItemList } from '@/utils/recipes';
-import Carousel from '@/components/organisms/Carousel';
-import { Typography } from '@/components/atoms/Typography';
+import { searchRecipesItemList } from '@utils/recipes';
+import Carousel from '@organisms/Carousel';
 
 
 export function ExploreRecipesCarousel() {

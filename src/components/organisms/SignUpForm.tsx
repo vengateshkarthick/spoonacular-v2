@@ -4,7 +4,7 @@ import { SignUp } from "@clerk/nextjs";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { AuthContainer } from "@/components/molecules/AuthContainer";
+import { AuthContainer } from "@molecules/AuthContainer";
 
 export function SignUpForm() {
   const searchParams = useSearchParams();

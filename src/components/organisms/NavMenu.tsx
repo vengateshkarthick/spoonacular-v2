@@ -1,7 +1,7 @@
 import React from "react";
-import { Typography } from "../atoms/Typography";
-import { UserAvatar } from "../molecules/UserAvatar";
-import { LinkButton } from "../molecules/LinkButton";
+import { Typography } from "@atoms/Typography";
+import { UserAvatar } from "@molecules/UserAvatar";
+import { LinkButton } from "@molecules/LinkButton";
 
 export function NavMenu () {
   return (

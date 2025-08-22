@@ -1,7 +1,7 @@
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
-import { UserProfile } from "@/components/organisms/UserProfile";
-import { AccountTemplate } from "@/components/templates/AccountTemplate";
+import { UserProfile } from "@organisms/UserProfile";
+import { AccountTemplate } from "@templates/AccountTemplate";
 
 export default async function AccountPage() {
   const { userId } = await auth();

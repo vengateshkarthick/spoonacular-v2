@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
-import { Typography } from "../atoms/Typography";
-import { NavMenu } from "../organisms/NavMenu";
+import { Typography } from "@atoms/Typography";
+import { NavMenu } from "@organisms/NavMenu";
 import { SignedoutTemplate } from "./SignedoutTemplate";
 
 

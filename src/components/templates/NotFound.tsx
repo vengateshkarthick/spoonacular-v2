@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { Button } from "@/components/atoms/Button";
-import { Typography } from "@/components/atoms/Typography";
-import { Card } from "../atoms/Card";
+import { Button } from "@atoms/Button";
+import { Typography } from "@atoms/Typography";
+import { Card } from "@atoms/Card";
 import Image from "next/image";
 
 export function NotFound() {

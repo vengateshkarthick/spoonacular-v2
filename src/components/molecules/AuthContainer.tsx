@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
-import { Card } from "../atoms/Card";
-import { Typography } from "../atoms/Typography";
+import { Card } from "@atoms/Card";
+import { Typography } from "@atoms/Typography";
 import Image from "next/image";
 
 interface AuthContainerProps {

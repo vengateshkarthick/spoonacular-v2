@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Typography, TypographyProps } from "@/components/atoms/Typography";
-import { cn } from "@/utils/cn";
+import { Typography, TypographyProps } from "@atoms/Typography";
+import { cn } from "@utils/cn";
 import { cva, type VariantProps } from "class-variance-authority";
 
 const anchorButtonVariants = cva(

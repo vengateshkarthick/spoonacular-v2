@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ExploreRecipesCarousel } from "@/components/templates/ExploreRecipesCarousel";
+import { ExploreRecipesCarousel } from "@templates/ExploreRecipesCarousel";
 
 export default function RecipePage() {
   return (

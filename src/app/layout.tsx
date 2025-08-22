@@ -1,6 +1,6 @@
 import { ClerkProvider } from '@clerk/nextjs';
 import { Poppins } from "next/font/google";
-import { RootLayout } from '@/components/templates/RootLayout';
+import { RootLayout } from '@templates/RootLayout';
 import './globals.css';
 
 const poppins = Poppins({

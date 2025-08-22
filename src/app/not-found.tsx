@@ -1,4 +1,4 @@
-import { NotFound } from "@/components/templates/NotFound";
+import { NotFound } from "@templates/NotFound";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

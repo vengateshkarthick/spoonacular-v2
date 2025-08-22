@@ -2,8 +2,8 @@
 
 import React from "react";
 import { SignUpButton as ClerckSignUpButton } from "@clerk/nextjs";
-import { Button } from "@/components/atoms/Button";
-import { Typography } from "@/components/atoms/Typography";
+import { Button } from "@atoms/Button";
+import { Typography } from "@atoms/Typography";
 
 export function SignUpButton() {
   return (
