@@ -5,7 +5,7 @@ import { Typography } from "@atoms/Typography";
 import { SignInButton } from "@organisms/SignInButton";
 import { SignUpButton } from "@organisms/SingUpButton";
 
-export function SignedoutTemplate() {
+export function LoggedOutTemplate() {
   return (
     <div className="space-y-6 w-full">
       <div className="relative w-full h-[400px] mb-8">

@@ -1,35 +1,43 @@
 export const searchRecipesItemList = [
     {
         image: '/illustrations/Burger.avif',
-        title: 'burger'
+        title: 'burger',
+        id: 'burger'
     },
     {
         image: '/illustrations/curd.avif',
-        title: 'lazzy'
+        title: 'lazzy',
+        id: 'lazzy',
     },
     {
         image: '/illustrations/Icecreams.avif',
-        title: 'icecream'
+        title: 'icecream',
+        id: 'icecream'
     },
     {
         image: '/illustrations/IndianBriyani.avif',
-        title: 'briyani'
+        title: 'briyani',
+        id: 'briayni',
     },
     {
         image: '/illustrations/Paratha.avif',
-        title: 'paratha'
+        title: 'paratha',
+        id: 'paratha'
     },
     {
-        image: '/illustrations/Pizza.avif',
-        title: 'pizza'
+        image: '/illustrations/homelyFood.avif',
+        title: 'homely food',
+        id:'homefood'
     },
     {
         image: '/illustrations/Ricethali.avif',
-        title: 'Thali'
+        title: 'Thali',
+        id: 'thali'
     },
     {
-        image: '/illustrations/Burger.avif',
-        title: 'Burger'
+        image: '/illustrations/deliciousCakes.avif',
+        title: 'Burger',
+        id: 'burger2'
     }
 
 ]

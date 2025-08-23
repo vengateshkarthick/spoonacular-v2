@@ -1,8 +1,10 @@
 "use client";
 
-import { ButtonHTMLAttributes } from "react";
-import { cn } from "@/utils/cn";
 import { cva, type VariantProps } from "class-variance-authority";
+import { motion, HTMLMotionProps } from "framer-motion";
+import { cn } from "@utils/cn";
+import { tapEffect } from "@utils/variants";
+
 
 const buttonVariants = cva(
   [
@@ -32,18 +34,22 @@ const buttonVariants = cva(
 );
 
 interface ButtonProps
-  extends ButtonHTMLAttributes<HTMLButtonElement>,
+  extends HTMLMotionProps<"button">,
     VariantProps<typeof buttonVariants> {}
 
 export function Button({
   variant,
   size,
   className,
+  onClick,
   ...props
 }: ButtonProps) {
   return (
-    <button
+    <motion.button
       className={cn(buttonVariants({ variant, size }), className)}
+      whileTap="onTap"
+      variants={tapEffect}
+      onClick={onClick}
       {...props}
     />
   );

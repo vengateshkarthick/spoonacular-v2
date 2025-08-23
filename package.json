@@ -5,16 +5,21 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_ENV=local next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.20.2",
     "@heroicons/react": "^2.2.0",
+    "axios": "^1.11.0",
+    "chart.js": "^4.5.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "dotenv": "^17.2.1",
+    "framer-motion": "^12.23.12",
     "next": "15.3.3",
     "react": "^19.0.0",
+    "react-chartjs-2": "^5.3.0",
     "react-dom": "^19.0.0",
     "react-error-boundary": "^6.0.0",
     "react-hot-toast": "^2.5.2",

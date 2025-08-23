@@ -2,10 +2,12 @@
 
 import React  from "react";
 import { ArrowLongLeftIcon, ArrowLongRightIcon } from "@heroicons/react/24/outline";
+import { motion } from "framer-motion";
 import { Button } from "@atoms/Button";
 import { Typography } from "@atoms/Typography";
 import { cn } from "@utils/cn";
 import { useCarouselScroll } from "@hooks/useCarouselScroll";
+import { listEffect, listItemEffect } from "@/utils/variants";
 
 interface CarouselProps<T = unknown> {
   title: string;
@@ -21,7 +23,7 @@ export function Carousel<T = unknown>({
   render,
   className,
   itemWrapperClassName,
-}: CarouselProps<T>) {
+}: CarouselProps<T & { id: string }>) {
   
     const {
         scrollRef,
@@ -62,9 +64,12 @@ export function Carousel<T = unknown>({
         </div>
       </div>
 
-      <div
+      <motion.div
         ref={scrollRef}
         onScroll={onScroll}
+        initial="hidden"
+        animate="visible"
+        variants={listEffect}
         className={cn(
           "overflow-x-auto scroll-smooth",
           "[scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
@@ -72,15 +77,19 @@ export function Carousel<T = unknown>({
         )}
       >
          {items.map((item, index) => (
-            <div
-              key={index}
+            <motion.div
+              key={item?.id ?? index}
+              custom={{ itemIdx: index }}
+              initial="hidden"
+              animate="visible"
+              variants={listItemEffect}
               ref={index === 0 ? firstItemRef : undefined}
               className={cn("flex-none", itemWrapperClassName)}
             >
               {render(item, index)}
-            </div>
+            </motion.div>
           ))}
-      </div>
+      </motion.div>
     </div>
   );
 }
