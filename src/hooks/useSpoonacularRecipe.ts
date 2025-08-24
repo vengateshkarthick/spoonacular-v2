@@ -57,6 +57,7 @@ function useSpoonacularRecipe({
   return {
     recipe,
     setSearchRecipeTitle,
+    searchRecipeTitle
   };
 }
 

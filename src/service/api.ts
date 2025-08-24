@@ -1,4 +1,9 @@
 export default {
     getRecipe: '/api/getRecipe',
-    complexSearch: '/recipes/complexSearch'
+    getRecipeInfoById: '/api/getRecipeInfoById',
+    spoonacular: {
+        complexSearch: '/recipes/complexSearch',
+        getRecipeInfoById: '/recipes/{?}/information' 
+
+    }
 }

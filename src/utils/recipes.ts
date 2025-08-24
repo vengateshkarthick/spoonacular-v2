@@ -1,8 +1,8 @@
 export const searchRecipesItemList = [
     {
         image: '/illustrations/Burger.avif',
-        title: 'burger',
-        id: 'burger'
+        title: 'pizza',
+        id: 'pizza'
     },
     {
         image: '/illustrations/curd.avif',

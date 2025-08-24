@@ -21,3 +21,10 @@ export const getAxiosInstance = () => {
     }
     return axiosInstance;
 }
+
+
+export const beautifyURL = (url: string, params: string[])  => {
+    for(let i = 0; i < params.length; i++) {
+        url.replace('{?}', params[i])
+    }
+}
