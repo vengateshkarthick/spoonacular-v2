@@ -11,3 +11,13 @@ export interface IFetchStatusContext {
     isLoading: boolean;
     isSuccess: boolean;
 }
+
+export interface IRecipe {
+    id: string;
+    title: string;
+    calories: string;
+    image: string;
+    imageType: string;
+    fat: string;
+    protein: string;
+  }

@@ -15,7 +15,7 @@ export function AlertToast({
       position={position}
       reverseOrder={false}
       toastOptions={{
-        duration: 1800,
+        duration: 2000,
         success: {
           style: {
             background: '#4ade8050',

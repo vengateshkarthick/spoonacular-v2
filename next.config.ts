@@ -2,7 +2,12 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ["spoonacular.com", "spoonacular.com/cdn"],
+    remotePatterns: [{
+      protocol: 'https',
+      hostname: 'img.spoonacular.com',
+      port: '',
+      pathname: '/recipes/**',
+    }],
   },
   env: {
     NEXT_PUBLIC_CLERK_SIGN_IN_URL: process.env.NEXT_PUBLIC_CLERK_SIGN_IN_URL,

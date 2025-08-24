@@ -28,7 +28,7 @@ export const listEffect = {
     opacity: 1,
     transition: {
       when: "beforeChildren",
-      staggerChildren: 0.2, // Delay between each item's animation
+      staggerChildren: 0.2, 
     },
   },
   hidden: {
@@ -41,11 +41,25 @@ export const listItemEffect = {
     opacity: 1,
     y: 0,
     transition: {
-      delay: 0.175 * itemIdx,
+      delay: 0.150 * itemIdx,
     },
   }),
   hidden: {
     opacity: 0,
     y: 20,
+  },
+};
+
+export const listItemEffectV2 = {
+  visible: ({ itemIdx = 1 }) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 0.175 * itemIdx,
+    },
+  }),
+  hidden: {
+    opacity: 0,
+    y: -1,
   },
 };

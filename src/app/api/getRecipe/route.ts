@@ -1,6 +1,6 @@
-import api from "@/utils/api";
+import api from "@/service/api";
 import { getSpoonacularNetworkInstance } from "@/utils/network";
-import { error } from "console";
+import { cacheRecipes } from "@utils/recipes";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {
@@ -19,7 +19,8 @@ export async function GET(request: NextRequest) {
     const params = new URLSearchParams({
       query: dish_name,
       maxLimit,
-      apiKey: process.env.SPOONACULAR_API_KEY!,
+      number: maxLimit,
+      apiKey: process.env.SPOONACULAR_API_KEY,
     });
 
     const spoonHttpRequest = getSpoonacularNetworkInstance();
@@ -29,9 +30,13 @@ export async function GET(request: NextRequest) {
         headers: {},
       }
     );
-
-    return NextResponse.json(response, { status: 200 });
+    // if suppose the spoonacular api doesn't return any.
+    if (!response.data?.results?.length) {
+        response.data.results = cacheRecipes;
+    }
+    return NextResponse.json(response.data, { status: 200 });
   } catch (err) {
+    console.log(err)
     return NextResponse.error();
   }
 }
