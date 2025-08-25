@@ -21,13 +21,15 @@ export function AlertToast({
             background: '#4ade8050',
             color: '#16a34a',
             padding: '0.5rem 4rem 0.5rem 1rem',
+            fontWeight: 'bold'
           }
         },
         error:{
             style: {
-                background: '#f8717150',
-                color: '#dc2626',
-                padding: '0.5rem 4rem 0.5rem 1rem',
+              background: '#f8717150',
+              color: '#dc2626',
+              padding: '0.5rem 4rem 0.5rem 1rem',
+              fontWeight: 'bold'
             }
         }
       }}

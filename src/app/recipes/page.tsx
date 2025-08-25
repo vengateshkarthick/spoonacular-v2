@@ -27,6 +27,7 @@ export function RecipePage() {
         <Dropdown
           onSelect={(selectedDiet) => setDietVariant(selectedDiet.toLowerCase() as EDietaryPreference)}
           options={dietOptions}
+          label="Choose your diet"
         />
         <SearchBar
           initialValue={searchRecipeTitle}
@@ -34,10 +35,12 @@ export function RecipePage() {
           placeholder="Search the delicious recipe..."
           onSearch={setSearchRecipeTitle}
           className="w-1/2 md:w-3/4"
+          label="Search any recipe "
+          inputClassName="mt-1"
         />
       </div>
       <ExploreRecipesCarousel
-        handleRecipe={(recipeName) => setSearchRecipeTitle(recipeName)}
+        handleRecipe={(recipeName) => setSearchRecipeTitle(() => recipeName[0].toUpperCase() + recipeName.slice(1,))}
       />
 
       <div className="flex justify-start items-center gap-8 flex-wrap pb-8 h-max w-full">

@@ -1,5 +1,5 @@
 import api from "@/service/api";
-import { getSpoonacularNetworkInstance } from "@/utils/network";
+import { beautifyURL, getSpoonacularNetworkInstance } from "@/utils/network";
 import { cacheRecipes } from "@utils/recipes";
 import { NextRequest, NextResponse } from "next/server";
 

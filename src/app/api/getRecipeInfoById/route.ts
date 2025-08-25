@@ -32,7 +32,7 @@ export async function GET(request: NextRequest) {
     if (!response?.data) {
         response.data = {}
     }
-    return NextResponse.json(response.data, { status: 200 });
+    return NextResponse.json({ recipeDetails: response.data}, { status: 200 });
   } catch (err) {
     console.log(err)
     return NextResponse.error();

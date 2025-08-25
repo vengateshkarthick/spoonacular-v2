@@ -4,6 +4,7 @@ import { cn } from "@utils/cn";
 import useSearch from "@hooks/useSearch";
 import { Poppins } from "next/font/google";
 import { Button } from "@atoms/Button";
+import { Typography } from "../atoms/Typography";
 
 interface SearchBarProps {
   onSearch: (value: string) => void;
@@ -13,6 +14,7 @@ interface SearchBarProps {
   debounceMs?: number;
   isLoading?: boolean;
   initialValue?: string;
+  label?: string;
 }
 
 const poppins = Poppins({
@@ -30,6 +32,7 @@ export function SearchBar({
   debounceMs = 2000,
   isLoading = false,
   initialValue = "",
+  label,
 }: SearchBarProps) {
   const { handleChange, handleClear, searchTerm } = useSearch(
     onSearch,
@@ -38,7 +41,13 @@ export function SearchBar({
   );
 
   return (
-    <div className={cn("relative w-full", className)}>
+    <div className={cn("relative w-full space-y-1", className)}>
+      {label && (
+        <label htmlFor="searchRecipeInput">
+          <Typography level={5} className="text-black/75 py-2">{label}</Typography>
+        </label>
+      )}
+
       <div className="relative">
         <MagnifyingGlassIcon
           className={cn(
@@ -51,9 +60,9 @@ export function SearchBar({
           value={searchTerm}
           onChange={handleChange}
           placeholder={placeholder}
-          name="searchRecipeInput"
+          id="searchRecipeInput"
           className={cn(
-            "h-10 w-full text-gray-800 font-medium rounded-md border border-gray-400 bg-white pl-9 pr-12 py-6 text-sm md:text-base outline-none placeholder:text-gray-500",
+            "h-12 w-full text-gray-800 font-medium rounded-md border border-gray-400 bg-white pl-9 pr-12 py-5 text-sm md:text-base outline-none placeholder:text-gray-500",
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-4",
             "disabled:cursor-not-allowed disabled:opacity-50",
             poppins.className,

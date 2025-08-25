@@ -24,7 +24,9 @@ export const getAxiosInstance = () => {
 
 
 export const beautifyURL = (url: string, params: string[])  => {
+    let urlWithParams = url;
     for(let i = 0; i < params.length; i++) {
-        url.replace('{?}', params[i])
+        urlWithParams.replace('{?}', params[i])
     }
+    return urlWithParams
 }

@@ -35,10 +35,10 @@ export function Dropdown({
   const fieldId = React.useId();
 
   return (
-    <div className="w-[280px] space-y-2">
+    <div className="w-[280px] space-y-1">
       {label && (
-        <label htmlFor={fieldId} className="block text-sm font-medium">
-          <Typography level={5}>{label}</Typography>
+        <label htmlFor={fieldId} className="block font-medium">
+          <Typography level={5} className="py-2">{label}</Typography>
         </label>
       )}
 

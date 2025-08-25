@@ -1,9 +1,9 @@
-import api from "@/service/api";
-import { useFetchStatusContext } from "@hooks/useFetchStatus";
-import { EDietaryPreference } from "@utils/enum"; 
 import { useEffect, useState, useDeferredValue } from "react";
-import { IRecipe } from "@utils/type";
-import { doGet } from "@/service/network";
+import { useFetchStatusContext } from "@hooks/useFetchStatus";
+import { ApiPromiseCallbacks, IRecipe } from "@utils/type";
+import { EDietaryPreference } from "@utils/enum"; 
+import api from "@service/api";
+import { doGet } from "@service/network";
 
 interface IGetRecipeResponse {
   offset: number;
@@ -15,10 +15,7 @@ interface IGetRecipeResponse {
 function useSpoonacularRecipe({
   onError,
   onSuccess,
-}: {
-  onSuccess?: (message?: string) => void;
-  onError?: (message?: string) => void;
-}) {
+}: ApiPromiseCallbacks) {
   const [searchRecipeTitle, setSearchRecipeTitle] = useState<string>("");
   const deferredSearchTitle = useDeferredValue(searchRecipeTitle);
   const [dietVariant, setDietVariant] = useState<EDietaryPreference>(EDietaryPreference.Vegetarian)
@@ -27,7 +24,7 @@ function useSpoonacularRecipe({
 
   useEffect(() => {
     const handleFetchRecipe = async () => {
-      const response = await doGet<IGetRecipeResponse>(api.getRecipe, {
+      const response = await doGet<IGetRecipeResponse>(api.app.getRecipe, {
         params: {
           dish_name: searchRecipeTitle,
           maxLimit: 100,
@@ -46,14 +43,12 @@ function useSpoonacularRecipe({
           handleFetchRecipe();
           updateStatus("isSuccess", true);
           onSuccess?.("Success");
-        }, 1000);
+        }, 1600);
       } catch (err) {
         console.log(err);
         updateStatus("isError", true);
         onError?.("Unable to fetch recipes!!");
-      } finally {
-        updateStatus("isLoading", false);
-      }
+      } 
     }
   }, [deferredSearchTitle, dietVariant]);
 

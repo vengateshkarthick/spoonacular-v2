@@ -20,6 +20,8 @@ export function RecipesLists({ recipes }: IRecipeLists) {
       animate="visible"
     >
       {recipes && (
+        <>
+        <Typography level={4} variant="primary" className="px-4">Feed the taste with delicious recipe's 😋</Typography>
         <PaginatedView<IRecipe>
           offset={8}
           itemWrapperClassName="flex justify-start gap-8  items-center flex-wrap"
@@ -60,6 +62,7 @@ export function RecipesLists({ recipes }: IRecipeLists) {
             </motion.div>
           )}
         />
+        </>
       )}
     </motion.div>
   );
