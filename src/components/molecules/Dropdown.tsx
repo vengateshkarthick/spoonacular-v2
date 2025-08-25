@@ -1,7 +1,9 @@
 import React from "react";
+import { Poppins } from "next/font/google";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { cn } from "@utils/cn";
 import { Typography } from "../atoms/Typography";
+
 
 interface IDropdownOption {
   label: string;
@@ -9,12 +11,19 @@ interface IDropdownOption {
 }
 
 interface IDropdown {
-  label: string;
+  label?: string;
   options: IDropdownOption[];
   onSelect: (value: string) => void;
   error?: boolean;
   inputClassName?: string;
 }
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  variable: "--font-poppins",
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+});
 
 export function Dropdown({
   label,
@@ -37,11 +46,11 @@ export function Dropdown({
         <select
           id={fieldId}
           className={cn(
-            "block h-10 pl-3 pr-10 w-full text-gray-800 font-medium rounded-md border border-gray-400 bg-white text-sm md:text-base outline-none placeholder:text-gray-500",
+            "cursor-pointer block appearance-none h-12 text-sm md:text-base pl-3 pr-10 w-full text-gray-800 font-medium rounded-md border border-gray-400 bg-white outline-none placeholder:text-gray-500",
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-4",
             "disabled:cursor-not-allowed disabled:opacity-50",
             error && "border-red-500 focus:border-red-500 focus:ring-red-500",
-            inputClassName
+            inputClassName, poppins.className
           )}
           onChange={(e) => onSelect?.(e.target.value)}
         >

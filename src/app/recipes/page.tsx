@@ -2,16 +2,19 @@
 
 import React from "react";
 import { ExploreRecipesCarousel } from "@templates/ExploreRecipesCarousel";
-import { AlertToast, notify } from "@organisms/AlertToast";
+import { AlertToast, notify } from "@molecules/AlertToast";
 import { RecipesLists } from "@templates/RecipesLists";
 import ExportRecipeShimmerLoader from "@templates/ExploreRecipeShimmerLoader";
 import { FetchStatusProvider } from "@context/FetchStatusProvider";
 import useSpoonacularRecipe from "@hooks/useSpoonacularRecipe";
 import { useFetchStatusContext } from "@/hooks/useFetchStatus";
-import { SearchBar } from "@/components/organisms/SearchBar";
+import { SearchBar } from "@molecules/SearchBar";
+import { Dropdown } from "@molecules/Dropdown";
+import { dietOptions } from "@utils/recipes";
+import { EDietaryPreference } from "@utils/enum";
 
 export function RecipePage() {
-  const { setSearchRecipeTitle, recipe, searchRecipeTitle } =
+  const { setSearchRecipeTitle, recipe, searchRecipeTitle, setDietVariant } =
     useSpoonacularRecipe({
       onError: notify.error,
       onSuccess: notify.success,
@@ -21,6 +24,10 @@ export function RecipePage() {
     <div className="flex flex-col h-full w-full justify-start items-start gap-8">
       <AlertToast />
       <div className="flex justify-between items-center w-full">
+        <Dropdown
+          onSelect={(selectedDiet) => setDietVariant(selectedDiet.toLowerCase() as EDietaryPreference)}
+          options={dietOptions}
+        />
         <SearchBar
           initialValue={searchRecipeTitle}
           isLoading={isLoading}

@@ -8,7 +8,7 @@
 
 /* Base font styles */
 body {
-  @apply bg-gray-50;
+  @apply bg-while;
   font-family: var(--font-poppins);
 }
 

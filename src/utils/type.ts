@@ -20,4 +20,4 @@ export interface IRecipe {
     imageType: string;
     fat: string;
     protein: string;
-  }
+}

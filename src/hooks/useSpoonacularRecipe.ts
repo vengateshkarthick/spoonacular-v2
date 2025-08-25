@@ -1,5 +1,6 @@
 import api from "@/service/api";
 import { useFetchStatusContext } from "@hooks/useFetchStatus";
+import { EDietaryPreference } from "@utils/enum"; 
 import { useEffect, useState, useDeferredValue } from "react";
 import { IRecipe } from "@utils/type";
 import { doGet } from "@/service/network";
@@ -20,6 +21,7 @@ function useSpoonacularRecipe({
 }) {
   const [searchRecipeTitle, setSearchRecipeTitle] = useState<string>("");
   const deferredSearchTitle = useDeferredValue(searchRecipeTitle);
+  const [dietVariant, setDietVariant] = useState<EDietaryPreference>(EDietaryPreference.Vegetarian)
   const [recipe, setRecipe] = useState<IRecipe[] | null>(null);
   const { updateStatus } = useFetchStatusContext();
 
@@ -29,6 +31,7 @@ function useSpoonacularRecipe({
         params: {
           dish_name: searchRecipeTitle,
           maxLimit: 100,
+          dietVariant,
         },
       });
       if (response && response?.results?.length) {
@@ -36,7 +39,7 @@ function useSpoonacularRecipe({
       }
     };
 
-    if (deferredSearchTitle) {
+    if (deferredSearchTitle && dietVariant) {
       updateStatus("isLoading", true);
       try {
         setTimeout(() => {
@@ -52,12 +55,13 @@ function useSpoonacularRecipe({
         updateStatus("isLoading", false);
       }
     }
-  }, [deferredSearchTitle]);
+  }, [deferredSearchTitle, dietVariant]);
 
   return {
     recipe,
     setSearchRecipeTitle,
-    searchRecipeTitle
+    searchRecipeTitle,
+    setDietVariant,
   };
 }
 

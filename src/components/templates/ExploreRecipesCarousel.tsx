@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { Button } from "@atoms/Button";
 import { searchRecipesItemList } from "@utils/recipes";
-import Carousel from "@organisms/Carousel";
+import Carousel from "@molecules/Carousel";
 
 interface IExploreRecipesCarousel {
   handleRecipe?: (recipeName: string) => void;

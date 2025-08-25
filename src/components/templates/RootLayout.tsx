@@ -1,8 +1,8 @@
 import { ReactNode } from "react";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { Typography } from "@atoms/Typography";
-import { NavMenu } from "@organisms/NavMenu";
-import { LoggedOutTemplate } from "@/components/templates/LoggedOutTemplate";
+import { NavMenu } from "@molecules/NavMenu";
+import { LoggedOutTemplate } from "@templates/LoggedOutTemplate";
 
 interface RootLayoutProps {
   children: ReactNode;

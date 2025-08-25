@@ -5,7 +5,7 @@ import { IRecipe } from "@utils/type";
 import { Typography } from "@atoms/Typography";
 import { listEffect, listItemEffectV2 } from "@utils/variants";
 import { Button } from "@atoms/Button";
-import PaginatedView from "@organisms/PaginatedView";
+import PaginatedView from "@molecules/PaginatedView";
 
 interface IRecipeLists {
   recipes: Array<IRecipe> | null;

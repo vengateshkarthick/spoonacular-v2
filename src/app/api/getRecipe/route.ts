@@ -7,9 +7,10 @@ export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const dish_name = searchParams.get("dish_name");
   const maxLimit = searchParams.get("maxLimit");
+  const dietVariant = searchParams.get("dietVariant");
   try {
-    if (!dish_name || !maxLimit) {
-      throw new Error("Payload is missing");
+    if (!dish_name || !maxLimit || !dietVariant) {
+      throw new Error("Incorrect formation of payload !!");
     }
 
     if (!process.env.SPOONACULAR_API_KEY) {
@@ -20,19 +21,23 @@ export async function GET(request: NextRequest) {
       query: dish_name,
       maxLimit,
       number: maxLimit,
+      diet: dietVariant,
       apiKey: process.env.SPOONACULAR_API_KEY,
     });
 
     const spoonHttpRequest = getSpoonacularNetworkInstance();
-    const response = await spoonHttpRequest.get(
-      `${api.spoonacular.complexSearch}?${params.toString()}`,
-      {
-        headers: {},
-      }
-    );
+    const response = {data: {
+        results: [] as any,
+    }}
+    // const response = await spoonHttpRequest.get(
+    //   `${api.spoonacular.complexSearch}?${params.toString()}`,
+    //   {
+    //     headers: {},
+    //   }
+    // );
     // if suppose the spoonacular api doesn't return any.
     if (!response.data?.results?.length) {
-        response.data.results = cacheRecipes;
+        response.data = cacheRecipes;
     }
     return NextResponse.json(response.data, { status: 200 });
   } catch (err) {

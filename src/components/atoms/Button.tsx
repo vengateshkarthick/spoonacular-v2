@@ -9,7 +9,7 @@ import { tapEffect } from "@utils/variants";
 const buttonVariants = cva(
   [
     "cursor-pointer relative inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-white transition-colors",
-    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[inherit] focus-visible:ring-offset-4",
     "disabled:!pointer-events-none disabled:!border-transparent disabled:!opacity-50 disabled:!bg-zinc-500 disabled:!text-zinc-900",
   ].join(" "),
   {
@@ -17,7 +17,7 @@ const buttonVariants = cva(
       variant: {
         primary: "bg-blue-700 hover:bg-blue-800 text-white shadow-sm",
         outline:
-          "border-2 font-medium border-blue-700 text-blue-700 bg-white hover:bg-gray-50 shadow-sm",
+          "border-2 font-medium border-blue-700 text-blue-700 bg-white hover:bg-blue-700 hover:text-white shadow-sm",
         ghost: "font-medium hover:bg-blue-50 text-blue-700",
       },
       size: {
