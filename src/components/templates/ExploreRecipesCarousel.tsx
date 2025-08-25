@@ -21,7 +21,7 @@ export function ExploreRecipesCarousel({ handleRecipe }: IExploreRecipesCarousel
         return (
           <Button
             variant="ghost"
-            className="m-1 p-2 h-max hover:ring-0 hover:shadow-md hover:scale-[1.025] hover:bg-transparent"
+            className="m-1 p-2 h-max hover:ring-0 transition-all hover:shadow-xl hover:scale-[1.025] hover:bg-transparent"
             role="button"
             onClick={() => handleRecipe?.(item.title)}
           >

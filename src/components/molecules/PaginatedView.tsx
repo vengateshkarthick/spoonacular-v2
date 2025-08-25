@@ -47,11 +47,11 @@ function PaginatedView<T = unknown>({
           <ArrowLongLeftIcon className="w-4 rounded h-4" strokeWidth="2" />
         </Button>
         <div className="flex justify-center h-4 items-center mx-4 --font-quicksand">
-          <Typography level={3} className=" text-inherit">
-            {pageDetails.currentPage + 1}
+          <Typography level={4} className="text-blue-600 font-normal">
+            {pageDetails.currentPage + 1} 
           </Typography>
-          <Typography level={6} className=" text-inherit ">
-          &nbsp;  / {totalPages}
+          <Typography level={5} className=" text-inherit font-medium ">
+          &nbsp; / &nbsp;{totalPages}
           </Typography>
         </div>
         <Button
