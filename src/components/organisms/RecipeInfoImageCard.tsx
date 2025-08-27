@@ -5,7 +5,7 @@ import { Typography } from "../atoms/Typography";
 import { CheckBadgeIcon, ClockIcon, StarIcon, HandThumbUpIcon } from "@heroicons/react/24/outline";
 import { fadeEffect } from "@/utils/variants";
 
-interface IRecipeInfoImageView {
+interface IRecipeInfoImageCard {
   imageURl: string;
   title: string;
   duration: number;
@@ -19,9 +19,9 @@ const renderDietList = (dietList: string[]) => (
     <Typography level={6} className="font-medium underline underline-offset-4 text-emerald-700">
       Diets
     </Typography>
-    <div className="grid grid-cols-3">
+    <div className="grid grid-cols-3 gap-2">
       {dietList?.map((diet) => (
-        <div className="flex gap-2 justify-start items-center" key={diet}>
+        <div className="flex gap-1 justify-start items-center" key={diet}>
           <CheckBadgeIcon className="h-8 w-8 text-black/75 stroke-2" />
           <Typography level={6} className="capitalize">
             {diet}
@@ -69,20 +69,20 @@ const renderScore = (value: number | string) => (
   </div>
 );
 
-function RecipeInfoImageView({
+function RecipeInfoImageCard({
   imageURl,
   title,
   duration,
   dietList,
   score,
   likes,
-}: IRecipeInfoImageView) {
+}: IRecipeInfoImageCard) {
   return (
     <motion.div 
       variants={fadeEffect}
       initial="hidden"
       animate="visible"
-      className="flex justify-between gap-2 md:gap-4 items-start w-full">
+      className="flex justify-between gap-2 md:gap-4 items-start w-full bg-white  border rounded-2xl p-4 md:p-8">
       <Image
         src={imageURl || "/illustrations/fallback.jpeg"}
         height={200}
@@ -108,4 +108,4 @@ function RecipeInfoImageView({
   );
 }
 
-export default RecipeInfoImageView;
+export default RecipeInfoImageCard;

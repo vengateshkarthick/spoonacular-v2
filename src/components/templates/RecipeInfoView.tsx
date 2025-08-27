@@ -4,25 +4,32 @@ import React from "react";
 import { notify } from "@molecules/AlertToast";
 import useSpoonacularGetRecipeInfo from "@hooks/useSpoonacularGetRecipeInfo";
 import { FetchStatusProvider } from "@context/FetchStatusProvider";
-import { useFetchStatusContext } from "@hooks/useFetchStatus";
-import RecipeInfoViewShimmerLoader from "@templates/RecipeInfoViewShimmerLoader";
-import RecipeInfoImageView from "@/components/templates/RecipeInfoImageView";
+import RecipeInfoImageCard from "@organisms/RecipeInfoImageCard";
+import RecipeInfoHealthProgressCard from "@organisms/RecipeInfoHealthProgressCard";
+import { ERecipeInfoDefaultValues } from "@utils/enum";
+import RecipeInfoShimmerLoader from "@templates/RecipeInfoViewShimmerLoader";
 
 function RecipeInfoView({ recipeId }: { recipeId: string }) {
   const { recipeDetails } = useSpoonacularGetRecipeInfo(recipeId, {
     onSuccess: notify.success,
     onError: notify.error,
   });
+
+
+  if (!recipeDetails) return <RecipeInfoShimmerLoader />
+
   return (
-    <div className="h-full w-full min-h-1/2  bg-white border rounded-2xl p-4 md:p-8">
-      <RecipeInfoImageView 
+    <div className="flex flex-col gap-8 justify-start items-start h-full w-full min-h-1/2">
+      <RecipeInfoImageCard 
         title={recipeDetails?.title ?? ''}
         imageURl={recipeDetails?.image ?? ''}
-        dietList={recipeDetails?.diets?.length ? recipeDetails.diets : ['diary Free', 'gluten Free']}
-        duration={recipeDetails?.preparationMinutes ?? 30}
-        score={recipeDetails?.spoonacularScore ?? 40}
-        likes={recipeDetails?.aggregateLikes ?? 0}
+        dietList={recipeDetails?.diets?.length ? recipeDetails.diets.slice(0, 4) : [ERecipeInfoDefaultValues.vegetarian, ERecipeInfoDefaultValues.dairyFree] as string[]}
+        duration={recipeDetails?.preparationMinutes ?? ERecipeInfoDefaultValues.preparationMinutes}
+        score={recipeDetails?.spoonacularScore ?? ERecipeInfoDefaultValues.spoonacularScore}
+        likes={recipeDetails?.aggregateLikes ?? ERecipeInfoDefaultValues.aggregateLikes}
       />
+      <RecipeInfoHealthProgressCard healthScore={recipeDetails?.healthScore ?? ERecipeInfoDefaultValues.healthScore} />
+      
     </div>
   );
 }

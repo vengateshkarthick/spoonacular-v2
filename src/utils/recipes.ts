@@ -395,7 +395,7 @@ export const cacheRecipeDetails:IRecipeDetails = {
     "preparationMinutes": null,
     "cookingMinutes": null,
     "aggregateLikes": 37,
-    "healthScore": 16,
+    "healthScore": 60,
     "creditsText": "foodista.com",
     "license": null,
     "sourceName": "foodista.com",

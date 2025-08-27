@@ -11,10 +11,10 @@ export const tapEffect: Variants = {
 };
 
 export const fadeEffect: Variants = {
-  initial: {
+  hidden: {
     opacity: 0,
   },
-  animate: {
+  visible: {
     opacity: 1,
     transition: {
       ease: "easeInOut",
