@@ -4,7 +4,6 @@ import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { cn } from "@utils/cn";
 import { Typography } from "../atoms/Typography";
 
-
 interface IDropdownOption {
   label: string;
   value: string;
@@ -38,7 +37,9 @@ export function Dropdown({
     <div className="w-[280px] space-y-1">
       {label && (
         <label htmlFor={fieldId} className="block font-medium">
-          <Typography level={5} className="py-2">{label}</Typography>
+          <Typography level={5} className="py-2">
+            {label}
+          </Typography>
         </label>
       )}
 
@@ -50,15 +51,18 @@ export function Dropdown({
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-4",
             "disabled:cursor-not-allowed disabled:opacity-50",
             error && "border-red-500 focus:border-red-500 focus:ring-red-500",
-            inputClassName, poppins.className
+            inputClassName,
+            poppins.className
           )}
           onChange={(e) => onSelect?.(e.target.value)}
         >
-          {options.map((option) => (
-            <option key={option.value} value={option.value}>
-              <Typography level={5}>{option.label}</Typography>
-            </option>
-          ))}
+          <Typography level={7}>
+            {options.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </Typography>
         </select>
 
         <div className="pointer-events-none absolute inset-y-0 right-2 flex items-center pr-1">
@@ -77,6 +81,3 @@ export function Dropdown({
     </div>
   );
 }
-
-
-

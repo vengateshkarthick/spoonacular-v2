@@ -7,7 +7,7 @@ import { RecipesLists } from "@templates/RecipesLists";
 import ExportRecipeShimmerLoader from "@templates/ExploreRecipeShimmerLoader";
 import { FetchStatusProvider } from "@context/FetchStatusProvider";
 import useSpoonacularRecipe from "@hooks/useSpoonacularRecipe";
-import { useFetchStatusContext } from "@/hooks/useFetchStatus";
+import { useFetchStatusContext } from "@hooks/useFetchStatus";
 import { SearchBar } from "@molecules/SearchBar";
 import { Dropdown } from "@molecules/Dropdown";
 import { dietOptions } from "@utils/recipes";

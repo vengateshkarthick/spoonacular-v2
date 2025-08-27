@@ -92,7 +92,7 @@ export function SearchBar({
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
               )}
             >
-              <XMarkIcon className="h-4 w-4" />
+              <XMarkIcon className="h-4 w-4 mt-1" />
             </Button>
           )}
         </div>

@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { doGet } from '@service/network';
 import api from '@service/api';
-import { beautifyURL } from '@utils/network';
 import { ApiPromiseCallbacks, IRecipeDetails } from '@utils/type';
 import { useFetchStatusContext } from '@hooks/useFetchStatus';
 

@@ -10,10 +10,6 @@ import {
   ArrowLongRightIcon,
 } from "@heroicons/react/24/outline";
 
-
-
-
-
 interface IPaginatedView<T> {
   offset: number;
   items: T[];
@@ -29,8 +25,13 @@ function PaginatedView<T = unknown>({
   className,
   itemWrapperClassName,
 }: IPaginatedView<T>) {
-  const { pageDetails, handleMoveNext, handleMovePrev, currentItem, totalPages } =
-    usePagination<T>(offset, items);
+  const {
+    pageDetails,
+    handleMoveNext,
+    handleMovePrev,
+    currentItem,
+    totalPages,
+  } = usePagination<T>({ offset, items });
 
   return (
     <div className={cn("w-full h-full space-y-4", className)}>
@@ -48,10 +49,10 @@ function PaginatedView<T = unknown>({
         </Button>
         <div className="flex justify-center h-4 items-center mx-4 --font-quicksand">
           <Typography level={4} className="text-blue-600 font-normal">
-            {pageDetails.currentPage + 1} 
+            {pageDetails.currentPage + 1}
           </Typography>
           <Typography level={5} className=" text-inherit font-medium ">
-          &nbsp; / &nbsp;{totalPages}
+            &nbsp; / &nbsp;{totalPages}
           </Typography>
         </div>
         <Button

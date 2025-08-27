@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { redirect, RedirectType } from "next/navigation";
 import Image from "next/image";
 import { IRecipe } from "@utils/type";
 import { Typography } from "@atoms/Typography";
@@ -36,7 +37,7 @@ export function RecipesLists({ recipes }: IRecipeLists) {
               key={recipe.id}
             >
               <Image
-                src={recipe.image}
+                src={recipe?.image ?? '/illustrations/fallback.jpeg'}
                 height="182"
                 width="273"
                 alt="recipe"
@@ -52,6 +53,7 @@ export function RecipesLists({ recipes }: IRecipeLists) {
                 </Typography>
                 <Button
                   variant="outline"
+                  onClick={() => redirect(`/recipe/${recipe.id}`, RedirectType.push)}
                   className="border-black text-black rounded-none group-hover:bg-black hover:bg-black group-hover:text-white hover:text-white"
                 >
                   <Typography level={7} className="text-inherit font-medium">

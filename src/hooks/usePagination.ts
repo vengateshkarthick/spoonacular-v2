@@ -7,7 +7,12 @@ interface IPageDetails {
   endIdx: number;
 }
 
-function usePagination<T>(offset: number, items: T[] ) {
+interface IPagination<T> {
+  offset: number;
+  items: T[];
+}
+
+function usePagination<T>({ offset, items }: IPagination<T>) {
   const [pageDetails, setPageDetails] = useState<IPageDetails>({
     currentPage: 0,
     startIdx: 0,
@@ -17,7 +22,7 @@ function usePagination<T>(offset: number, items: T[] ) {
   const handleMovePrev = () => {
     const newStartIdx = Math.max(pageDetails.startIdx - offset, 0);
     const newEndIdx = newStartIdx + offset - 1;
-    setPageDetails((prev) => ({
+    setPageDetails(() => ({
       currentPage: pageDetails.currentPage - 1,
       startIdx: newStartIdx,
       endIdx: Math.min(newEndIdx, items.length - 1),
@@ -42,7 +47,6 @@ function usePagination<T>(offset: number, items: T[] ) {
     pageDetails.startIdx,
     pageDetails.endIdx + 1
   );
-
 
   const totalPages = Math.ceil(items.length / offset);
 
