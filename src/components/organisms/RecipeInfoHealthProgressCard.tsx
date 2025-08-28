@@ -35,10 +35,11 @@ function RecipeInfoHealthProgressCard({
             id="healthScoreInfo"
             className="ml-auto"
             place="top"
+            variant="info"
             content={
               <Typography
                 level={6}
-                className="text-emerald-700 text-sm font-normal"
+                className="text-sm font-normal"
               >
                 Health score is a calculated value from spoonacular based on the
                 micro and macro nutrients value present in the dish

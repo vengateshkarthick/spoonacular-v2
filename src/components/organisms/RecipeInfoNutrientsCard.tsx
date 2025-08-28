@@ -72,8 +72,8 @@ function RecipeInfoNutrientsCard({
         items={nutrients}
         offset={4}
         itemWrapperClassName="grid grid-cols sm:grid-cols-2 md:grid-cols-4 place-items-center place-content-center gap-4 py-4"
-        prevPageButtonClassName="border-red-800 text-inherit hover:bg-red-800 hover:text- hover:[&>.left-arrow]:text-white [&>.left-arrow]:text-red-500"
-        nextPageButtonClassName="border-red-800 text-inherit hover:bg-red-800 hover:text-white  hover:[&>.right-arrow]:text-white [&>.right-arrow]:text-red-500"
+        prevPageButtonClassName="border-red-800 text-inherit hover:bg-red-800 hover:text- hover:[&>.left-arrow]:text-white [&>.left-arrow]:text-red-800"
+        nextPageButtonClassName="border-red-800 text-inherit hover:bg-red-800 hover:text-white  hover:[&>.right-arrow]:text-white [&>.right-arrow]:text-red-800"
         displayPageNumberClassName="text-[#9f071285] [&>.current-page]:text-red-800"
         render={nutritionChartViewRenderer}
       />
