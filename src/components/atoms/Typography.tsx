@@ -22,8 +22,8 @@ const tags = {
   3: "h3",
   4: "h4",
   5: "h5",
-  6: "h6",
-  7: "p"
+  6: "p",
+  7: "span",
 } as const;
 
 const typographyVariants = cva("", {
@@ -40,7 +40,7 @@ const typographyVariants = cva("", {
       "4": "text-xl font-normal",
       "5": "text-lg font-normal",
       "6": "text-base font-normal",
-      "7": "text-sm font-normal"
+      "7": "text-sm font-normal",
     },
   },
   defaultVariants: {
@@ -49,18 +49,25 @@ const typographyVariants = cva("", {
   },
 });
 
-export function Typography({ level, variant = "primary", className, ...props }: TypographyProps) {
+export function Typography({
+  level,
+  variant = "primary",
+  className,
+  ...props
+}: TypographyProps) {
   const Tag = tags[level];
-  
 
   return (
     <Tag
       className={cn(
-        typographyVariants({ variant, level: String(level) as "1"|"2"|"3"|"4"|"5"|"6"|"7" }),
+        typographyVariants({
+          variant,
+          level: String(level) as "1" | "2" | "3" | "4" | "5" | "6" | "7",
+        }),
         className,
         poppins.className
       )}
       {...props}
     />
   );
-} 
+}

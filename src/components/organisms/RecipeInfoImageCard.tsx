@@ -16,7 +16,7 @@ interface IRecipeInfoImageCard {
 
 const renderDietList = (dietList: string[]) => (
   <div className="flex gap-2 flex-col justify-start items-start">
-    <Typography level={6} className="font-medium underline underline-offset-4 text-emerald-700">
+    <Typography level={6} className="font-medium border rounded-lg px-4 py-1 bg-emerald-400">
       Diets
     </Typography>
     <div className="grid grid-cols-3 gap-2">
@@ -34,19 +34,19 @@ const renderDietList = (dietList: string[]) => (
 
 const renderDuration = (value: number | string) => (
   <div className="flex gap-2 flex-col justify-start items-start">
-    <Typography level={6} className="font-medium underline underline-offset-4 text-emerald-700">
+    <Typography level={6} className="font-medium border rounded-lg px-4 py-1 bg-emerald-400">
       Duration
     </Typography>
      <div className="flex justify-start items-center gap-2">
       <ClockIcon className="h-8 w-8 text-zinc-800" />
-      <Typography level={6}>{value}</Typography>
+      <Typography level={6} className="font-normal">{value}</Typography>
      </div>
   </div>
 );
 
 const renderLikes = (value: number | string) => (
   <div className="flex gap-2 flex-col justify-start items-start">
-    <Typography level={6} className="font-medium underline underline-offset-4 text-emerald-700">
+    <Typography level={6} className="font-medium border rounded-lg px-4 py-1 bg-emerald-400">
       Likes
     </Typography>
      <div className="flex justify-start items-center gap-2">
@@ -59,7 +59,7 @@ const renderLikes = (value: number | string) => (
 
 const renderScore = (value: number | string) => (
   <div className="flex gap-2 flex-col justify-start items-start">
-    <Typography level={6} className="font-medium underline underline-offset-4 text-emerald-700">
+    <Typography level={6} className="font-medium border rounded-lg px-4 py-1 bg-emerald-400">
       Overall score
     </Typography>
     <div className="flex justify-start items-center gap-2">

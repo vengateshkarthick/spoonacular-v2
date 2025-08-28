@@ -1,27 +1,22 @@
 import React, { useMemo } from "react";
 import { motion } from "framer-motion";
+import { ERecipeInfoColorCode } from "@utils/enum";
 import { fadeEffect } from "@utils/variants";
 import ProgressBar from "@atoms/ProgressBar";
-import { EHealthScoreColorIndicator } from "@utils/enum";
-import { Typography } from "../atoms/Typography";
+import { Typography } from "@atoms/Typography";
 import { BeakerIcon, InformationCircleIcon } from "@heroicons/react/24/outline";
+import TooltipWrapper from "@molecules/TooltipWrapper";
+import Badge from "@molecules/Badge";
 
 interface IRecipeInfoHealthProgressCard {
   healthScore: number;
 }
 
-const getHealthScoreIndicator = (healthScore:number) => {
-    if (healthScore <= 25) return EHealthScoreColorIndicator.bad;
-    if (healthScore <= 75) return EHealthScoreColorIndicator.fine;
-    return EHealthScoreColorIndicator.better;
-};
 
 function RecipeInfoHealthProgressCard({
   healthScore,
 }: IRecipeInfoHealthProgressCard) {
   
-
-  const healthScoreIndicator = useMemo(() => getHealthScoreIndicator(healthScore), [healthScore]);
 
   return (
     <motion.div
@@ -31,42 +26,41 @@ function RecipeInfoHealthProgressCard({
       className="bg-white  border rounded-2xl p-4 md:p-8 flex  flex-col justify-start gap-2 items-start w-full py-4"
     >
       <div className="flex justify-start items-center gap-2 w-full pb-2">
-        <BeakerIcon className="h-8 w-8 text-black" />
-        <Typography level={6} className="font-semibold text-black/75 mt-3">
+        <BeakerIcon className="h-8 w-8 text-emerald-700" />
+        <Typography level={6} className="font-semibold text-emerald-700 mt-3">
           Health Score
         </Typography>
-        <InformationCircleIcon className="h-6 cursor-pointer w-6 text-black mt-3 ml-auto" />
+        <div className="ml-auto">
+          <TooltipWrapper
+            id="healthScoreInfo"
+            className="ml-auto"
+            place="top"
+            content={
+              <Typography
+                level={6}
+                className="text-emerald-700 text-sm font-normal"
+              >
+                Health score is a calculated value from spoonacular based on the
+                micro and macro nutrients value present in the dish
+              </Typography>
+            }
+          >
+            <InformationCircleIcon className="h-6 cursor-pointer w-6 text-zinc-500 mt-3 ml-auto" />
+          </TooltipWrapper>
+        </div>
       </div>
       <div className="grid grid-cols-3 w-full text-left">
         <div className="w-full">
-          <Typography
-            level={6}
-            className="font-semibold"
-            style={{ color: EHealthScoreColorIndicator.bad }}
-          >
-            Bad
-          </Typography>
+          <Badge variant="danger">Bad</Badge>
         </div>
         <div className="w-full">
-          <Typography
-            level={6}
-            className="font-semibold"
-            style={{ color: EHealthScoreColorIndicator.fine }}
-          >
-            Fine
-          </Typography>
+          <Badge variant="warning">Fine</Badge>
         </div>
         <div className="w-full">
-          <Typography
-            level={6}
-            className="font-semibold"
-            style={{ color: EHealthScoreColorIndicator.better }}
-          >
-            Better
-          </Typography>
+          <Badge variant="success">Better</Badge>
         </div>
       </div>
-      <ProgressBar value={healthScore} color={healthScoreIndicator} />
+      <ProgressBar value={healthScore} color={ERecipeInfoColorCode.fine} />
     </motion.div>
   );
 }

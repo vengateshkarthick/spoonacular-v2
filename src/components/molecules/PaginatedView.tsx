@@ -16,6 +16,9 @@ interface IPaginatedView<T> {
   render: (item: T, index: number) => React.ReactNode;
   className?: string;
   itemWrapperClassName?: string;
+  prevPageButtonClassName?:string;
+  nextPageButtonClassName?:string;
+  displayPageNumberClassName?:string;
 }
 
 function PaginatedView<T = unknown>({
@@ -24,6 +27,9 @@ function PaginatedView<T = unknown>({
   offset,
   className,
   itemWrapperClassName,
+  prevPageButtonClassName,
+  nextPageButtonClassName,
+  displayPageNumberClassName
 }: IPaginatedView<T>) {
   const {
     pageDetails,
@@ -42,26 +48,26 @@ function PaginatedView<T = unknown>({
         <Button
           onClick={handleMovePrev}
           variant="outline"
-          className="border-black/75 text-inherit hover:bg-black/75 hover:text-white"
+          className={cn("border-black/75 text-inherit  hover:bg-black/75 hover:text-white", prevPageButtonClassName)}
           disabled={pageDetails.startIdx === 0}
         >
-          <ArrowLongLeftIcon className="w-4 rounded h-4" strokeWidth="2" />
+          <ArrowLongLeftIcon className={cn("w-4 rounded h-4 left-arrow", pageDetails.startIdx === 0 && "!text-zinc-900")} strokeWidth="2" />
         </Button>
-        <div className="flex justify-center h-4 items-center mx-4 --font-quicksand">
-          <Typography level={4} className="text-blue-600 font-normal">
+        <div className={cn("flex justify-center h-4 items-center mx-4 --font-quicksand", displayPageNumberClassName)}>
+          <Typography level={4} className="text-blue-600 current-page font-normal">
             {pageDetails.currentPage + 1}
           </Typography>
-          <Typography level={5} className=" text-inherit font-medium ">
+          <Typography level={5} className=" text-inherit font-medium">
             &nbsp; / &nbsp;{totalPages}
           </Typography>
         </div>
         <Button
           variant="outline"
-          className="border-black/75 text-inherit hover:bg-black/75 hover:text-white"
+          className={cn("border-black/75 text-inherit hover:bg-black/75 hover:text-white", nextPageButtonClassName)}
           onClick={handleMoveNext}
           disabled={pageDetails.endIdx === items.length - 1}
         >
-          <ArrowLongRightIcon className="w-4 rounded h-4" strokeWidth="2" />
+          <ArrowLongRightIcon className={cn("w-4 rounded h-4 right-arrow", pageDetails.endIdx === items.length - 1 && "!text-zinc-900")} strokeWidth="2" />
         </Button>
       </div>
     </div>

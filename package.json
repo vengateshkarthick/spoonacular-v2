@@ -24,6 +24,7 @@
     "react-dom": "^19.0.0",
     "react-error-boundary": "^6.0.0",
     "react-hot-toast": "^2.5.2",
+    "react-tooltip": "^5.29.1",
     "tailwind-merge": "^3.3.0"
   },
   "devDependencies": {

@@ -21,8 +21,8 @@ export enum ERecipeInfoDefaultValues {
 
 }
 
-export enum EHealthScoreColorIndicator {
-    fine = '#a16207',
-    bad = '#dc2626',
-    better = '#10B981'
+export enum ERecipeInfoColorCode {
+    bad = '#ef4444',
+    fine = '#eab308',
+    better = '#10b981',
 }
