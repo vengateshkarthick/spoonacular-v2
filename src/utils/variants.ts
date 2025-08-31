@@ -28,7 +28,7 @@ export const listEffect = {
     opacity: 1,
     transition: {
       when: "beforeChildren",
-      staggerChildren: 0.2, 
+      staggerChildren: 0.2,
     },
   },
   hidden: {
@@ -41,7 +41,7 @@ export const listItemEffect = {
     opacity: 1,
     y: 0,
     transition: {
-      delay: 0.150 * itemIdx,
+      delay: 0.15 * itemIdx,
     },
   }),
   hidden: {
@@ -62,4 +62,13 @@ export const listItemEffectV2 = {
     opacity: 0,
     y: -1,
   },
+};
+
+export const accordionEffect: Variants = {
+  open: {
+    height: "auto",
+    opacity: 1,
+    transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] },
+  },
+  collapsed: { height: 0, opacity: 0 },
 };

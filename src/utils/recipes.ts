@@ -3215,7 +3215,94 @@ export const cacheRecipeDetails:IRecipeDetails = {
                         }
                     ],
                     "equipment": []
-                }
+                },
+                {
+                    "number": 3,
+                    "step": "Mix burger ingredients in a bowl and shape into 4-6 patties. Grill (or pan fry) for 2 minutes each side or until juices run clear.",
+                    "ingredients": [],
+                    "equipment": [
+                        {
+                            "id": 404706,
+                            "name": "grill",
+                            "localizedName": "grill",
+                            "image": "https://spoonacular.com/cdn/equipment_100x100/grill.jpg"
+                        },
+                        {
+                            "id": 404783,
+                            "name": "bowl",
+                            "localizedName": "bowl",
+                            "image": "https://spoonacular.com/cdn/equipment_100x100/bowl.jpg"
+                        },
+                        {
+                            "id": 404645,
+                            "name": "frying pan",
+                            "localizedName": "frying pan",
+                            "image": "https://spoonacular.com/cdn/equipment_100x100/pan.png"
+                        }
+                    ],
+                    "length": {
+                        "number": 2,
+                        "unit": "minutes"
+                    }
+                },
+                {
+                    "number": 4,
+                    "step": "Mix burger ingredients in a bowl and shape into 4-6 patties. Grill (or pan fry) for 2 minutes each side or until juices run clear.",
+                    "ingredients": [],
+                    "equipment": [
+                        {
+                            "id": 404706,
+                            "name": "grill",
+                            "localizedName": "grill",
+                            "image": "https://spoonacular.com/cdn/equipment_100x100/grill.jpg"
+                        },
+                        {
+                            "id": 404783,
+                            "name": "bowl",
+                            "localizedName": "bowl",
+                            "image": "https://spoonacular.com/cdn/equipment_100x100/bowl.jpg"
+                        },
+                        {
+                            "id": 404645,
+                            "name": "frying pan",
+                            "localizedName": "frying pan",
+                            "image": "https://spoonacular.com/cdn/equipment_100x100/pan.png"
+                        }
+                    ],
+                    "length": {
+                        "number": 2,
+                        "unit": "minutes"
+                    }
+                },
+                {
+                    "number": 5,
+                    "step": "Mix burger ingredients in a bowl and shape into 4-6 patties. Grill (or pan fry) for 2 minutes each side or until juices run clear.",
+                    "ingredients": [],
+                    "equipment": [
+                        {
+                            "id": 404706,
+                            "name": "grill",
+                            "localizedName": "grill",
+                            "image": "https://spoonacular.com/cdn/equipment_100x100/grill.jpg"
+                        },
+                        {
+                            "id": 404783,
+                            "name": "bowl",
+                            "localizedName": "bowl",
+                            "image": "https://spoonacular.com/cdn/equipment_100x100/bowl.jpg"
+                        },
+                        {
+                            "id": 404645,
+                            "name": "frying pan",
+                            "localizedName": "frying pan",
+                            "image": "https://spoonacular.com/cdn/equipment_100x100/pan.png"
+                        }
+                    ],
+                    "length": {
+                        "number": 2,
+                        "unit": "minutes"
+                    }
+                },
             ]
         }
     ],

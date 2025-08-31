@@ -9,6 +9,7 @@ import RecipeInfoHealthProgressCard from "@organisms/RecipeInfoHealthProgressCar
 import { ERecipeInfoDefaultValues } from "@utils/enum";
 import RecipeInfoShimmerLoader from "@templates/RecipeInfoViewShimmerLoader";
 import RecipeInfoNutrientsCard from "@organisms/RecipeInfoNutrientsCard";
+import AnalyzedInstructionsAccordion from "../organisms/AnalyzedInstructionsAccordion";
 
 function RecipeInfoView({ recipeId }: { recipeId: string }) {
   const { recipeDetails } = useSpoonacularGetRecipeInfo(recipeId, {
@@ -54,6 +55,11 @@ function RecipeInfoView({ recipeId }: { recipeId: string }) {
           nutrients={recipeDetails?.nutrition?.nutrients}
         />
       )}
+      {
+        recipeDetails?.analyzedInstructions?.length && (
+          <AnalyzedInstructionsAccordion steps={recipeDetails.analyzedInstructions[0]?.steps} />
+        )
+      }
     </div>
   );
 }
