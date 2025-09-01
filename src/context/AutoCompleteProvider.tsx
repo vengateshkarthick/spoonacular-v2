@@ -43,10 +43,9 @@ export function AutoCompleteProvider({ children }: React.PropsWithChildren) {
         handleAutoComplete();
       } catch (err) {
         console.log(err);
-      } 
-    }
-    else {
-        setCanShowResults(false);
+      }
+    } else {
+      setCanShowResults(false);
     }
   }, [searchText]);
 
@@ -59,7 +58,14 @@ export function AutoCompleteProvider({ children }: React.PropsWithChildren) {
       canShowResults,
       setCanShowResults,
     }),
-    [searchText, autoCompleteResults, setSearchText, isLoading, canShowResults, setCanShowResults]
+    [
+      searchText,
+      autoCompleteResults,
+      setSearchText,
+      isLoading,
+      canShowResults,
+      setCanShowResults,
+    ]
   );
 
   return (
@@ -68,6 +74,5 @@ export function AutoCompleteProvider({ children }: React.PropsWithChildren) {
     </AutoCompleteContext.Provider>
   );
 }
-
 
 export default AutoCompleteProvider;

@@ -26,19 +26,25 @@ export function ExploreRecipes() {
       <AlertToast />
       <div className="flex justify-between items-center gap-2 w-full">
         <Dropdown
-          onSelect={(selectedDiet) => setDietVariant(selectedDiet.toLowerCase() as EDietaryPreference)}
+          onSelect={(selectedDiet) =>
+            setDietVariant(selectedDiet.toLowerCase() as EDietaryPreference)
+          }
           options={dietOptions}
           label="Choose your diet"
         />
-        <RecipeSearchResultsAutoCompleteView 
-         initialValue={searchRecipeTitle}
-         isFetchingResults={isLoading}
-         onSearch={setSearchRecipeTitle}
-         canShowAutoCompleteResults={!isSuccess}
+        <RecipeSearchResultsAutoCompleteView
+          initialValue={searchRecipeTitle}
+          isFetchingResults={isLoading}
+          onSearch={setSearchRecipeTitle}
+          canShowAutoCompleteResults={!isSuccess}
         />
       </div>
       <ExploreRecipesCarousel
-        handleRecipe={(recipeName) => setSearchRecipeTitle(() => recipeName[0].toUpperCase() + recipeName.slice(1,))}
+        handleRecipe={(recipeName) =>
+          setSearchRecipeTitle(
+            () => recipeName[0].toUpperCase() + recipeName.slice(1)
+          )
+        }
       />
 
       <div className="flex justify-start items-center gap-8 flex-wrap pb-8 h-max w-full">

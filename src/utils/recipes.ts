@@ -3331,5 +3331,6 @@ export const autoCompleteRecipeSearch = [
         "id": 737543,
         "title": "chicken pie",
         "imageType": "jpg"
-    }
+    },
+    
 ]

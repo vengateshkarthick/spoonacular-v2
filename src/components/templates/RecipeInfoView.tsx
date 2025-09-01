@@ -55,11 +55,11 @@ function RecipeInfoView({ recipeId }: { recipeId: string }) {
           nutrients={recipeDetails?.nutrition?.nutrients}
         />
       )}
-      {
-        recipeDetails?.analyzedInstructions?.length && (
-          <AnalyzedInstructionsAccordion steps={recipeDetails.analyzedInstructions[0]?.steps} />
-        )
-      }
+      {recipeDetails?.analyzedInstructions?.length && (
+        <AnalyzedInstructionsAccordion
+          steps={recipeDetails.analyzedInstructions[0]?.steps}
+        />
+      )}
     </div>
   );
 }

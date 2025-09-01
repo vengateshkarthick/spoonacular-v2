@@ -26,19 +26,24 @@ function ListView({
 }: IListView) {
   return (
     <motion.ul
-      className={cn("h-max  w-full space-y-4  bg-white py-4 rounded-xl border", listContainerClassName)}
+      className={cn(
+        "min-h-full max-h-64 overflow-y-auto w-full space-y-4  bg-white py-4 rounded-xl border",
+        listContainerClassName
+      )}
       variants={listEffect}
       initial={"hidden"}
       animate={"visible"}
     >
       {lists.map(({ text, id, onClick }, idx) => (
         <motion.li
-          className={cn("w-full m-0 p-2 divide-y divide-gray-300", listItemClassName)}
+          className={cn(
+            "w-full m-0 p-2 divide-y-2 divide-gray-700",
+            listItemClassName
+          )}
           variants={listItemEffect}
           custom={{ itemIdx: idx }}
           initial="hidden"
           animate="visible"
-
           key={`list-item-${id}-${idx}`}
         >
           <Button
