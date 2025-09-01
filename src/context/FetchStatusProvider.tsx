@@ -1,6 +1,6 @@
 "use client"
-import { FetchStatusContext } from "@/hooks/useFetchStatus";
-import { IFetchStatus } from "@/utils/type";
+import { FetchStatusContext } from "@hooks/useFetchStatus";
+import { IFetchStatus } from "@utils/type";
 import React, { useCallback, useState } from "react";
 
 const initialFetchStatus = {

@@ -3309,3 +3309,27 @@ export const cacheRecipeDetails:IRecipeDetails = {
     "spoonacularScore": 75.16944122314453,
     "spoonacularSourceUrl": "https://spoonacular.com/apple-cheddar-turkey-burgers-with-chipotle-yogurt-sauce-632502"
 }
+
+export const autoCompleteRecipeSearch = [
+    {
+        "id": 296687,
+        "title": "chicken",
+        "imageType": "jpg"
+    },
+    {
+        "id": 42569,
+        "title": "chicken bbq",
+        "imageType": "jpg"
+    },
+
+    {
+        "id": 83890,
+        "title": "chicken blt",
+        "imageType": "jpg"
+    },
+    {
+        "id": 737543,
+        "title": "chicken pie",
+        "imageType": "jpg"
+    }
+]

@@ -1,60 +1,13 @@
-"use client";
-
 import React from "react";
-import { ExploreRecipesCarousel } from "@templates/ExploreRecipesCarousel";
-import { AlertToast, notify } from "@molecules/AlertToast";
-import { RecipesLists } from "@templates/RecipesLists";
-import ExportRecipeShimmerLoader from "@templates/ExploreRecipeShimmerLoader";
-import { FetchStatusProvider } from "@context/FetchStatusProvider";
-import useSpoonacularRecipe from "@hooks/useSpoonacularRecipe";
-import { useFetchStatusContext } from "@hooks/useFetchStatus";
-import { SearchBar } from "@molecules/SearchBar";
-import { Dropdown } from "@molecules/Dropdown";
-import { dietOptions } from "@utils/recipes";
-import { EDietaryPreference } from "@utils/enum";
+import ExploreRecipesProvider from "@/components/templates/ExploreRecipes";
 
-export function RecipePage() {
-  const { setSearchRecipeTitle, recipe, searchRecipeTitle, setDietVariant } =
-    useSpoonacularRecipe({
-      onError: notify.error,
-      onSuccess: notify.success,
-    });
-  const { isLoading, isSuccess } = useFetchStatusContext();
+export default function ExploreRecipePage() {
+  
   return (
-    <div className="flex flex-col h-full w-full justify-start items-start gap-8">
-      <AlertToast />
-      <div className="flex justify-between items-center w-full">
-        <Dropdown
-          onSelect={(selectedDiet) => setDietVariant(selectedDiet.toLowerCase() as EDietaryPreference)}
-          options={dietOptions}
-          label="Choose your diet"
-        />
-        <SearchBar
-          initialValue={searchRecipeTitle}
-          isLoading={isLoading}
-          placeholder="Search the delicious recipe..."
-          onSearch={setSearchRecipeTitle}
-          className="w-1/2 md:w-3/4"
-          label="Search any recipe "
-          inputClassName="mt-1"
-        />
-      </div>
-      <ExploreRecipesCarousel
-        handleRecipe={(recipeName) => setSearchRecipeTitle(() => recipeName[0].toUpperCase() + recipeName.slice(1,))}
-      />
-
-      <div className="flex justify-start items-center gap-8 flex-wrap pb-8 h-max w-full">
-        {isLoading && <ExportRecipeShimmerLoader />}
-        {isSuccess && <RecipesLists recipes={recipe} />}
-      </div>
+    <div className="h-full w-full">
+      <ExploreRecipesProvider />
     </div>
   );
 }
 
-export default function RecipePageProvider() {
-  return (
-    <FetchStatusProvider>
-      <RecipePage />
-    </FetchStatusProvider>
-  );
-}
+

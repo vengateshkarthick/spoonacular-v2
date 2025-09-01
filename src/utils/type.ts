@@ -157,3 +157,18 @@ export interface ApiPromiseCallbacks {
   onSuccess?: (message?: string) => void;
   onError?: (message?: string) => void;
 }
+
+export interface IAutoCompleteResults {
+  id: number;
+  title: string;
+  imageType: string;
+}
+
+export interface IAutoCompleteContext {
+  searchText: string;
+  setSearchText: (query:string) => void;
+  isLoading: boolean;
+  autoCompleteResults: IAutoCompleteResults[];
+  canShowResults: boolean;
+  setCanShowResults: (canShow: boolean) => void;
+}

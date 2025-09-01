@@ -1,4 +1,4 @@
-import { IFetchStatusContext } from '@/utils/type';
+import { IFetchStatusContext } from '@utils/type';
 import React, { useContext } from 'react';
 
 
