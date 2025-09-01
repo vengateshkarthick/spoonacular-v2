@@ -14,7 +14,7 @@ export function AutoCompleteProvider({ children }: React.PropsWithChildren) {
   const [searchText, setSearchText] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [canShowResults, setCanShowResults] = useState<boolean>(false);
-  const handleSearchText = useDebounce(setSearchText, 900);
+  const handleSearchText = useDebounce(setSearchText, 500);
   const [autoCompleteResults, setAutoCompleteResults] = useState<
     IAutoCompleteResults[]
   >([]);
@@ -36,7 +36,7 @@ export function AutoCompleteProvider({ children }: React.PropsWithChildren) {
         setIsLoading(false);
       }
     };
-    
+
     if (searchText) {
       setIsLoading(true);
       try {
