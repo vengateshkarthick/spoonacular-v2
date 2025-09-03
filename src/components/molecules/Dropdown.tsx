@@ -2,7 +2,7 @@ import React from "react";
 import { Poppins } from "next/font/google";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { cn } from "@utils/cn";
-import { Typography } from "../atoms/Typography";
+import { Typography } from "@atoms/Typography";
 
 interface IDropdownOption {
   label: string;
@@ -56,13 +56,12 @@ export function Dropdown({
           )}
           onChange={(e) => onSelect?.(e.target.value)}
         >
-          <Typography level={7}>
             {options.map((option) => (
-              <option key={option.value} value={option.value}>
+              <option key={option.value} value={option.value} className={cn("text-sm font-normal", poppins.className)}>
                 {option.label}
               </option>
             ))}
-          </Typography>
+          
         </select>
 
         <div className="pointer-events-none absolute inset-y-0 right-2 flex items-center pr-1">

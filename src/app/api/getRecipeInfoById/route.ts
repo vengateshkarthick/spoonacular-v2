@@ -21,21 +21,20 @@ export async function GET(request: NextRequest) {
     });
 
     const spoonHttpRequest = getSpoonacularNetworkInstance();
-    const fetchRecipeByIdURL = beautifyURL(api.spoonacular.getRecipeInfoById, [recipeId])
-    console.log(fetchRecipeByIdURL)
-    // const response = await spoonHttpRequest.get(
-    //   `${fetchRecipeByIdURL}?${params.toString()}`,
-    //   {
-    //     headers: {},
-    //   }
-    // );
-    // // if suppose the spoonacular api doesn't return any.
-    // if (!response?.data) {
-    //     response.data = {}
-    // }
-    const response = {
-        data: cacheRecipeDetails
+    const fetchRecipeByIdURL = beautifyURL(api.spoonacular.getRecipeInfoById, [recipeId]);
+    const response = await spoonHttpRequest.get(
+      `${fetchRecipeByIdURL}?${params.toString()}`,
+      {
+        headers: {},
+      }
+    );
+    // if suppose the spoonacular api doesn't return any.
+    if (!response?.data) {
+        response.data = {}
     }
+    // const response = {
+    //     data: cacheRecipeDetails
+    // }
     return NextResponse.json({ recipeDetails: response.data }, { status: 200 });
   } catch (err) {
     console.log(err)

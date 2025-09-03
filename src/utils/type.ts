@@ -166,8 +166,8 @@ export interface IAutoCompleteResults {
 
 export interface IAutoCompleteContext {
   searchText: string;
-  setSearchText: (query:string) => void;
-  isLoading: boolean;
+  setSearchTextWithDebounceEffect: (query:string) => void;
+  isFetchingSearchResults: boolean;
   autoCompleteResults: IAutoCompleteResults[];
   canShowResults: boolean;
   setCanShowResults: (canShow: boolean) => void;

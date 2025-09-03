@@ -8,11 +8,10 @@ import ExportRecipeShimmerLoader from "@templates/ExploreRecipeShimmerLoader";
 import { FetchStatusProvider } from "@context/FetchStatusProvider";
 import useSpoonacularRecipe from "@hooks/useSpoonacularRecipe";
 import { useFetchStatusContext } from "@hooks/useFetchStatus";
-import { SearchBar } from "@molecules/SearchBar";
 import { Dropdown } from "@molecules/Dropdown";
 import { dietOptions } from "@utils/recipes";
 import { EDietaryPreference } from "@utils/enum";
-import RecipeSearchResultsAutoCompleteView from "../organisms/RecipeSearchResultsAutoCompleteView";
+import RecipeSearchResultsAutoCompleteView from "@organisms/RecipeSearchResultsAutoCompleteView";
 
 export function ExploreRecipes() {
   const { setSearchRecipeTitle, recipe, searchRecipeTitle, setDietVariant } =
@@ -34,9 +33,7 @@ export function ExploreRecipes() {
         />
         <RecipeSearchResultsAutoCompleteView
           initialValue={searchRecipeTitle}
-          isFetchingResults={isLoading}
           onSearch={setSearchRecipeTitle}
-          canShowAutoCompleteResults={!isSuccess}
         />
       </div>
       <ExploreRecipesCarousel

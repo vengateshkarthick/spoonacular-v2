@@ -1,51 +1,56 @@
 "use client";
 
 import React, { useEffect, useMemo } from "react";
-import { useSpoonacularAutoCompeteSearch } from "@/hooks/useSpoonacularAutoCompleteSearch";
-import { SearchBar } from "../molecules/SearchBar";
+import { useSpoonacularAutoCompeteSearch } from "@hooks/useSpoonacularAutoCompleteSearch";
+import { SearchBar } from "@molecules/SearchBar";
 import ListView from "@molecules/ListIView";
 import AutoCompleteProvider from "@context/AutoCompleteProvider";
+import { useFetchStatusContext } from "@hooks/useFetchStatus";
 
 interface IRecipeSearchResultsAutoCompleteView {
   onSearch: (query: string) => void;
   initialValue: string;
-  isFetchingResults: boolean;
-  canShowAutoCompleteResults: boolean;
 }
 
 function RecipeSearchResultsAutoCompleteView({
   onSearch,
   initialValue,
-  isFetchingResults,
-  canShowAutoCompleteResults,
 }: IRecipeSearchResultsAutoCompleteView) {
   const {
     searchText,
     setCanShowResults,
-    setSearchText,
+    setSearchTextWithDebounceEffect,
     autoCompleteResults,
-    isLoading,
+    isFetchingSearchResults,
     canShowResults,
   } = useSpoonacularAutoCompeteSearch();
 
+
+  const {isLoading } = useFetchStatusContext();
+
+  useEffect(() => {
+    if(isLoading && canShowResults) {
+      setCanShowResults(false);
+    }
+  }, [isLoading, canShowResults])
+
   useEffect(() => {
     if (initialValue) {
-      setSearchText(initialValue);
+      setSearchTextWithDebounceEffect(initialValue);
     }
   }, [initialValue]);
 
-  useEffect(() => {
-    if (!canShowAutoCompleteResults) {
-      setCanShowResults(false);
-    }
-  }, [canShowAutoCompleteResults]);
+
+
 
   const formattedListItems = useMemo(
     () =>
       autoCompleteResults?.map((results) => ({
         id: results.id.toString(),
         text: results.title,
-        onClick: () => onSearch(results.title),
+        onClick: () => {
+          onSearch(results.title);
+        },
       })),
     [autoCompleteResults]
   );
@@ -54,9 +59,9 @@ function RecipeSearchResultsAutoCompleteView({
     <div className="flex flex-col justify-start items-start h-full w-full">
       <SearchBar
         initialValue={searchText}
-        isLoading={isLoading || isFetchingResults}
+        isLoading={isFetchingSearchResults}
         placeholder="Search the delicious recipe..."
-        onSearch={setSearchText}
+        onSearch={setSearchTextWithDebounceEffect}
         className="w-full"
         label="Search any recipe "
         inputClassName="mt-1"

@@ -8,8 +8,9 @@ import RecipeInfoImageCard from "@organisms/RecipeInfoImageCard";
 import RecipeInfoHealthProgressCard from "@organisms/RecipeInfoHealthProgressCard";
 import { ERecipeInfoDefaultValues } from "@utils/enum";
 import RecipeInfoShimmerLoader from "@templates/RecipeInfoViewShimmerLoader";
-import RecipeInfoNutrientsCard from "@organisms/RecipeInfoNutrientsCard";
+import RecipeInfoNutrientsChartView from "@/components/organisms/RecipeInfoNutrientsChartView";
 import AnalyzedInstructionsAccordion from "../organisms/AnalyzedInstructionsAccordion";
+import ShowRecipeSummary from "../organisms/ShowRecipeSummary";
 
 function RecipeInfoView({ recipeId }: { recipeId: string }) {
   const { recipeDetails } = useSpoonacularGetRecipeInfo(recipeId, {
@@ -45,13 +46,17 @@ function RecipeInfoView({ recipeId }: { recipeId: string }) {
           ERecipeInfoDefaultValues.aggregateLikes
         }
       />
+
+      {recipeDetails?.summary && (
+        <ShowRecipeSummary summary={recipeDetails.summary} />
+      )}
       <RecipeInfoHealthProgressCard
         healthScore={
           recipeDetails?.healthScore ?? ERecipeInfoDefaultValues.healthScore
         }
       />
       {recipeDetails?.nutrition?.nutrients && (
-        <RecipeInfoNutrientsCard
+        <RecipeInfoNutrientsChartView
           nutrients={recipeDetails?.nutrition?.nutrients}
         />
       )}

@@ -12,9 +12,9 @@ interface IAutoCompleteResultsResponse {
 
 export function AutoCompleteProvider({ children }: React.PropsWithChildren) {
   const [searchText, setSearchText] = useState<string>("");
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isFetchingSearchResults, setIsFetchingSearchResults] = useState<boolean>(false);
   const [canShowResults, setCanShowResults] = useState<boolean>(false);
-  const handleSearchText = useDebounce(setSearchText, 500);
+  const setSearchTextWithDebounceEffect = useDebounce(setSearchText, 100);
   const [autoCompleteResults, setAutoCompleteResults] = useState<
     IAutoCompleteResults[]
   >([]);
@@ -33,12 +33,12 @@ export function AutoCompleteProvider({ children }: React.PropsWithChildren) {
       if (response?.results?.length) {
         setAutoCompleteResults(response.results);
         setCanShowResults(true);
-        setIsLoading(false);
+        setIsFetchingSearchResults(false);
       }
     };
 
     if (searchText) {
-      setIsLoading(true);
+      setIsFetchingSearchResults(true);
       try {
         handleAutoComplete();
       } catch (err) {
@@ -53,16 +53,16 @@ export function AutoCompleteProvider({ children }: React.PropsWithChildren) {
     () => ({
       searchText,
       autoCompleteResults,
-      setSearchText: handleSearchText,
-      isLoading,
+      setSearchTextWithDebounceEffect,
+      isFetchingSearchResults,
       canShowResults,
       setCanShowResults,
     }),
     [
       searchText,
       autoCompleteResults,
-      setSearchText,
-      isLoading,
+      setSearchTextWithDebounceEffect,
+      isFetchingSearchResults,
       canShowResults,
       setCanShowResults,
     ]

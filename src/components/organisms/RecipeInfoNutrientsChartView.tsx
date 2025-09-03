@@ -9,7 +9,7 @@ import { IRecipeNutritionDetails } from "@utils/type";
 import { fadeEffect } from "@utils/variants";
 import { cn } from "@utils/cn";
 
-export interface IRecipeInfoNutrientsCard {
+export interface IRecipeInfoNutrientsChartView {
   nutrients: IRecipeNutritionDetails[];
   className?: string;
 }
@@ -48,10 +48,10 @@ const nutritionChartViewRenderer = ({
 );
 
 
-function RecipeInfoNutrientsCard({
+function RecipeInfoNutrientsChartView({
   nutrients,
   className,
-}: IRecipeInfoNutrientsCard) {
+}: IRecipeInfoNutrientsChartView) {
   return (
     <motion.div
       variants={fadeEffect}
@@ -81,4 +81,4 @@ function RecipeInfoNutrientsCard({
   );
 }
 
-export default RecipeInfoNutrientsCard;
+export default RecipeInfoNutrientsChartView;
